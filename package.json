@@ -1,0 +1,32 @@
+{
+  "name": "kkpipe-cli",
+  "version": "0.9.1",
+  "description": "Commandline utility for kpipe",
+  "main": "index.js",
+  "scripts": {
+    "dev": "./bin/devcluster.sh",
+    "test": "jest"
+  },
+  "author": "Paul Rowan <prowan@novisci.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "kpipe-core": "^0.9.1",
+    "kpipe-sequence": "^0.9.1",
+    "kpipe-streams": "^0.9.1",
+    "uid-safe": "^2.1.5",
+    "wtfnode": "^0.8.0",
+    "yargs": "^14.0.0"
+  }
+}

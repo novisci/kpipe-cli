@@ -1,0 +1,27 @@
+{
+  "env": {
+    "es6": true,
+    "jest/globals": true
+  },
+  "extends": [
+    "standard"
+  ],
+  "globals": {
+    "BigInt": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "jest"
+  ],
+  "rules": {
+    "max-statements-per-line": "error",
+    "arrow-parens": ["error", "always"],
+    "standard/no-callback-literal": "off",
+    "react/prop-types": "off"
+  },
+  "settings": {
+  }
+}
