@@ -18,7 +18,7 @@ const cli = require('yargs')
   })
 
   .middleware((argv) => {
-    require('../../src/logger')({
+    require('./logger')({
       verbose: argv.verbose || argv.debug,
       debug: argv.debug
     })
