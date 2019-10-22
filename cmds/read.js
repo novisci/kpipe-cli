@@ -138,13 +138,13 @@ module.exports = {
               alias: 'b',
               describe: 'Broker host(s) hostname:port',
               type: 'string',
-              default: process.env.DPIPE_BROKERS
+              default: process.env.KPIPE_BROKERS
             })
             .option('groupid', {
               alias: 'g',
               describe: 'Consumer group id',
               type: 'string',
-              default: 'dpipe-' + require('uid-safe').sync(6)
+              default: 'kpipe-' + require('uid-safe').sync(6)
             })
             .option('partition', {
               alias: 'p',

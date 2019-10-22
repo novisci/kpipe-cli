@@ -105,7 +105,7 @@ module.exports = {
         alias: 'b',
         describe: 'Broker host(s) hostname:port',
         type: 'string',
-        default: process.env.DPIPE_BROKERS
+        default: process.env.KPIPE_BROKERS
       })
       .demandCommand()
 

@@ -1,8 +1,9 @@
+#!/usr/bin/env node
+
 var wtf = require('wtfnode')
 require('dotenv').config()
 
-module.exports = require('yargs')
-
+const cli = require('yargs')
   .option('debug', {
     describe: 'Enable debugging log output',
     type: 'boolean'

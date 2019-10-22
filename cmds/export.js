@@ -11,7 +11,7 @@ function exportPipe (topic, position, stream, argv = {}) {
     PipelinePromise(
       Reader({
         type: 'kafka',
-        brokers: process.env.DPIPE_BROKERS
+        brokers: process.env.KPIPE_BROKERS
       })(topic, position),
       // require('../transform/progress')(),
       // require('../transform/lineate')(),
@@ -88,7 +88,7 @@ module.exports = {
         alias: 'b',
         describe: 'Broker host(s) hostname:port',
         type: 'string',
-        default: process.env.DPIPE_BROKERS
+        default: process.env.KPIPE_BROKERS
       })
       .option('partition', {
         alias: 'p',

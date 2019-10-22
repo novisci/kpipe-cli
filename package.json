@@ -2,7 +2,8 @@
   "name": "kkpipe-cli",
   "version": "0.9.1",
   "description": "Commandline utility for kpipe",
-  "main": "index.js",
+  "main": "kpipe.js",
+  "bin": "./kpipe",
   "scripts": {
     "dev": "./bin/devcluster.sh",
     "test": "jest"
@@ -23,7 +24,7 @@
   "dependencies": {
     "dotenv": "^8.1.0",
     "kpipe-core": "^0.9.1",
-    "kpipe-sequence": "^0.9.1",
+    "kpipe-sequence": "^0.9.2",
     "kpipe-streams": "^0.9.1",
     "uid-safe": "^2.1.5",
     "wtfnode": "^0.8.0",
