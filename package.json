@@ -1,5 +1,5 @@
 {
-  "name": "kkpipe-cli",
+  "name": "kpipe-cli",
   "version": "0.9.3",
   "description": "Commandline utility for kpipe",
   "main": "kpipe.js",
