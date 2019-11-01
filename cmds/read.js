@@ -26,7 +26,7 @@ function decompressStream (argv) {
 }
 
 module.exports = {
-  command: 'read <source> [options...]',
+  command: 'read <source>',
   desc: 'Read from stream to stdout',
 
   builder:
@@ -127,7 +127,7 @@ module.exports = {
 
       // kafka -> stdout
       .command({
-        command: 'kafka [options...] <topic>',
+        command: 'kafka <topic>',
         desc: 'Read from Kafka topic to stdout',
         builder:
           (yargs) => yargs

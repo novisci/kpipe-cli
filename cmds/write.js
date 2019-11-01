@@ -2,7 +2,7 @@
  *
  */
 const { PassThrough } = require('stream')
-const { PipelinePromise } = require('kpipe-core')
+const { PipelinePromise } = require('kpipe-sequence')
 const { Transform } = require('kpipe-streams')
 const { Reader, Writer } = require('kpipe-core')
 
@@ -10,7 +10,7 @@ function writePipe (stream, argv = {}) {
   return require('../cli-cmd')(
     PipelinePromise(
       Reader({ type: 'stdio' })(),
-      Transform.Delineate(),
+      // Transform.Delineate(),
       // require('../../../src/transform/progress')(),
       ...stream
     )
@@ -54,7 +54,7 @@ module.exports = {
           (yargs) => yargs,
         handler:
           (argv) => writePipe([
-            Transform.Lineate(),
+            // Transform.Lineate(),
             compressStream(argv),
             Writer({ type: 'stdio' })()
           ],
@@ -73,7 +73,7 @@ module.exports = {
             }),
         handler:
           (argv) => writePipe([
-            Transform.Lineate(),
+            // Transform.Lineate(),
             compressStream(argv),
             Writer({ type: 'fs' })(argv.filename)
           ],
@@ -97,7 +97,7 @@ module.exports = {
             }),
         handler:
           (argv) => writePipe([
-            Transform.Lineate(),
+            // Transform.Lineate(),
             compressStream(argv),
             Writer({
               type: 's3',
@@ -133,6 +133,7 @@ module.exports = {
             }
 
             return writePipe([
+              Transform.Delineate(),
               Writer({
                 type: 'kafka',
                 brokers: argv.broker,

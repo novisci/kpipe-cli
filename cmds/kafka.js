@@ -60,6 +60,25 @@ async function summarizePartitions (client, topic, parts, fn) {
   })))
 }
 
+async function summarizeTopic (client, topic, parts, fn) {
+  fn(`  ${topic}:`)
+  const numParts = parts.length
+  let numMsgs = 0
+  return PromiseChain({}, ...parts.map((p) => async () => new Promise((resolve) => {
+    client.queryWatermarkOffsets(topic, p.id, 1000, (err, off) => {
+      if (err) {
+        fn(`    ${p.id} [ERROR] (${p.leader}) ${err.message}`)
+      } else {
+        numMsgs += off.highOffset - off.lowOffset
+      }
+      resolve()
+    })
+  })))
+    .then(() => {
+      fn(`    ${numParts} [${numMsgs}]`)
+    })
+}
+
 async function summarizeTopics (client, topics, fn, options) {
   return PromiseChain({}, ...topics.map((t) => async () => {
     // if (t.name === '__consumer_offsets') {
@@ -68,7 +87,7 @@ async function summarizeTopics (client, topics, fn, options) {
     if (options.all) {
       await summarizePartitions(client, t.name, t.partitions, fn)
     } else {
-      fn(`  ${t.name}`)
+      await summarizeTopic(client, t.name, t.partitions, fn)
     }
   }))
 }
