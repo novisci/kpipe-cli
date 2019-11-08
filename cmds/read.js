@@ -211,7 +211,8 @@ module.exports = {
                 commit: argv.commit,
                 debug: argv.debug,
                 fullMessage: argv.full
-              })(argv.topic, position)
+              })(argv.topic, position),
+              Transform.Lineate()
             ],
             argv)
           }
