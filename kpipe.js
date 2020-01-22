@@ -1,7 +1,12 @@
 #!/usr/bin/env node
 
 var wtf = require('wtfnode')
-require('dotenv').config()
+
+// Ensure that the .env file is read from the installation directory, not the current dir
+const prjDir = __dirname.replace(/\/\w+$/, '/.env')
+require('dotenv').config({
+  path: prjDir
+})
 
 const cli = require('yargs')
   .option('debug', {

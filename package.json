@@ -1,6 +1,6 @@
 {
   "name": "kpipe-cli",
-  "version": "0.9.8",
+  "version": "0.9.9",
   "description": "Commandline utility for kpipe",
   "main": "kpipe.js",
   "bin": {
