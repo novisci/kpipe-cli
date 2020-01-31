@@ -46,21 +46,25 @@ function renderSeq (seq) {
 //   return str
 // }
 
-async function summarizePartitions (client, topic, parts, fn) {
+async function summarizePartitions (client, topic, parts, fn, options) {
   fn(`  ${topic}:`)
   return PromiseChain({}, ...parts.map((p) => async () => new Promise((resolve) => {
     client.queryWatermarkOffsets(topic, p.id, 1000, (err, off) => {
       if (err) {
         fn(`    ${p.id} [ERROR] (${p.leader}) ${err.message}`)
       } else {
-        fn(`    ${p.id} [${off.lowOffset}-${off.highOffset}] (${p.leader})`)
+        if (options.human) {
+          fn(`    ${p.id} [${off.lowOffset.toLocaleString()} - ${off.highOffset.toLocaleString()}] (${p.leader})`)
+        } else {
+          fn(`    ${p.id} [${off.lowOffset} - ${off.highOffset}] (${p.leader})`)
+        }
       }
       resolve()
     })
   })))
 }
 
-async function summarizeTopic (client, topic, parts, fn) {
+async function summarizeTopic (client, topic, parts, fn, options) {
   fn(`  ${topic}:`)
   const numParts = parts.length
   let numMsgs = 0
@@ -75,7 +79,11 @@ async function summarizeTopic (client, topic, parts, fn) {
     })
   })))
     .then(() => {
-      fn(`    ${numParts} [${numMsgs}]`)
+      if (options.human) {
+        fn(`    ${numParts} [${numMsgs.toLocaleString()}]`)
+      } else {
+        fn(`    ${numParts} [${numMsgs}]`)
+      }
     })
 }
 
@@ -85,9 +93,9 @@ async function summarizeTopics (client, topics, fn, options) {
     //   return Promise.resolve()
     // }
     if (options.all) {
-      await summarizePartitions(client, t.name, t.partitions, fn)
+      await summarizePartitions(client, t.name, t.partitions, fn, options)
     } else {
-      await summarizeTopic(client, t.name, t.partitions, fn)
+      await summarizeTopic(client, t.name, t.partitions, fn, options)
     }
   }))
 }
@@ -138,6 +146,12 @@ module.exports = {
               alias: 'a',
               type: 'boolean',
               describe: 'Show all information for topics'
+            })
+            .option('human', {
+              alias: 'h',
+              type: 'boolean',
+              describe: 'Display human readable counts',
+              default: false
             }),
         handler:
           (argv) => {
@@ -146,7 +160,8 @@ module.exports = {
             })
               .then((producer) => {
                 return renderMetadata(producer, KafkaProducer.metadata(), console.log, {
-                  all: argv.all
+                  all: argv.all,
+                  human: argv.human
                 })
                   .catch(console.error)
                   .then(() => KafkaProducer.disconnect())
