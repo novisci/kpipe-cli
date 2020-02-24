@@ -1,6 +1,6 @@
 {
   "name": "kpipe-cli",
-  "version": "0.9.16",
+  "version": "0.9.17",
   "description": "Commandline utility for kpipe",
   "main": "kpipe.js",
   "bin": {
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "dotenv": "^8.1.0",
-    "kpipe-core": "^0.9.13",
+    "kpipe-core": "^0.9.14",
     "kpipe-sequence": "^0.9.4",
     "kpipe-streams": "^0.9.6",
     "uid-safe": "^2.1.5",
