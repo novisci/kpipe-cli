@@ -1,6 +1,6 @@
 {
   "name": "kpipe-cli",
-  "version": "0.9.23",
+  "version": "0.9.24",
   "description": "Commandline utility for kpipe",
   "main": "kpipe.js",
   "bin": {
@@ -22,11 +22,11 @@
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
-    "jest": "^24.9.0"
+    "jest": "^25.2.7"
   },
   "dependencies": {
     "dotenv": "^8.1.0",
-    "kpipe-core": "^0.9.21",
+    "kpipe-core": "^0.9.22",
     "kpipe-sequence": "^0.9.4",
     "kpipe-streams": "^0.9.6",
     "uid-safe": "^2.1.5",
