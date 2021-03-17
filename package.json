@@ -6,10 +6,7 @@
   "bin": {
     "kpipe": "./kpipe.js"
   },
-  "scripts": {
-    "dev": "./bin/devcluster.sh",
-    "test": "jest"
-  },
+  "scripts": {},
   "author": "Paul Rowan <prowan@novisci.com>",
   "license": "MIT",
   "repository": "github:novisci/kpipe-cli",
@@ -26,9 +23,7 @@
   },
   "dependencies": {
     "dotenv": "^8.1.0",
-    "kpipe-core": "^0.11.3",
-    "kpipe-sequence": "^0.9.4",
-    "kpipe-streams": "^0.9.6",
+    "kpipe": "^0.12.1",
     "uid-safe": "^2.1.5",
     "wtfnode": "^0.8.1",
     "yargs": "^14.2.2"
