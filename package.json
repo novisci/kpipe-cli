@@ -1,6 +1,6 @@
 {
   "name": "kpipe-cli",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "Commandline utility for kpipe",
   "main": "kpipe.js",
   "bin": {
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "dotenv": "^8.1.0",
-    "kpipe": "^0.12.1",
+    "kpipe": "^0.12.2",
     "uid-safe": "^2.1.5",
     "wtfnode": "^0.8.1",
     "yargs": "^14.2.2"
